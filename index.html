@@ -15,20 +15,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* --- GRADIENTE DE FONDO CORREGIDO --- */
+            /* Gradiente dinámico de fondo */
             background: linear-gradient(135deg, #020818 0%, #001035 30%, #104080 55%, #fcd385 75%, #fb923c 100%);
             background-size: 300% 300%;
             animation: gradientBG 25s ease-in-out infinite;
+            overflow: hidden;
         }
 
-        /* Animación para que el gradiente se mueva suavemente */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* TARJETA DE LOGIN CON EFECTO GLASSMORPHISM */
+        /* Tarjeta con efecto Glassmorphism */
         .login-card {
             background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(20px) saturate(180%);
@@ -40,37 +40,58 @@
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 10;
         }
 
-        /* CONTENEDOR CIRCULAR DEL LOGO */
+        /* CONTENEDOR CIRCULAR DEL LOGO - CORREGIDO PARA QUE SE VEA COMPLETO */
         .logo-container {
             background: white;
-            width: 90px;
-            height: 90px;
+            width: 110px;         /* Tamaño optimizado */
+            height: 110px;
             margin: 0 auto 25px auto;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            overflow: hidden; /* Asegura que nada se salga del círculo */
-            padding: 10px; /* Espacio para que el logo no toque los bordes */
+            padding: 15px;        /* Espacio interno para que el logo no se corte */
+            overflow: hidden;
         }
 
-        /* AJUSTE DEL LOGO VERTICAL */
+        /* IMAGEN DEL LOGO CON AJUSTE DE ESCALA */
         .logo-img {
             max-width: 100%;
-            height: auto;
-            object-fit: contain; /* Mantiene la proporción sin deformar */
+            max-height: 100%;
+            object-fit: contain;  /* Mantiene la proporción sin recortar */
+            display: block;
         }
 
-        h2 { margin: 0; color: #1e3a8a; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: -0.5px; }
-        p { color: #475569; font-size: 0.85rem; margin-bottom: 30px; font-weight: 500; }
+        h2 { 
+            margin: 0; 
+            color: #1e3a8a; 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: -0.5px; 
+        }
+
+        p { 
+            color: #475569; 
+            font-size: 0.8rem; 
+            margin-bottom: 30px; 
+            font-weight: 500; 
+        }
 
         .input-group { text-align: left; margin-bottom: 18px; }
-        label { display: block; font-size: 0.7rem; font-weight: 700; color: #1e3a8a; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+
+        label { 
+            display: block; 
+            font-size: 0.65rem; 
+            font-weight: 700; 
+            color: #1e3a8a; 
+            margin-bottom: 6px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
         
         input {
             width: 100%;
@@ -90,7 +111,6 @@
             box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
         }
 
-        /* BOTÓN AZUL CORPORATIVO */
         button {
             width: 100%;
             padding: 14px;
@@ -102,7 +122,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 10px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -137,7 +157,7 @@
 
     <script>
         function login() {
-            // Lógica simple para el demo: redirige al dashboard
+            // Redirección al dashboard para el demo
             window.location.href = "dashboard.html";
         }
     </script>
