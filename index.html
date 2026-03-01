@@ -6,6 +6,8 @@
     <title>Login | Miso Dataworks</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * { box-sizing: border-box; }
+
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
@@ -13,10 +15,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: url('3.jpg') no-repeat center center fixed;
-            background-size: cover;
+            /* --- GRADIENTE DE FONDO CORREGIDO --- */
+            background: linear-gradient(135deg, #020818 0%, #001035 30%, #104080 55%, #fcd385 75%, #fb923c 100%);
+            background-size: 300% 300%;
+            animation: gradientBG 25s ease-in-out infinite;
         }
 
+        /* Animación para que el gradiente se mueva suavemente */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* TARJETA DE LOGIN CON EFECTO GLASSMORPHISM */
         .login-card {
             background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(20px) saturate(180%);
@@ -28,42 +40,57 @@
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
         }
 
-        /* AJUSTE DEL LOGO */
+        /* CONTENEDOR CIRCULAR DEL LOGO */
         .logo-container {
             background: white;
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px auto;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 25px auto;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden; /* Asegura que nada se salga del círculo */
+            padding: 10px; /* Espacio para que el logo no toque los bordes */
         }
 
+        /* AJUSTE DEL LOGO VERTICAL */
         .logo-img {
-            max-width: 65%; /* Escala el logo dentro del círculo blanco */
+            max-width: 100%;
             height: auto;
+            object-fit: contain; /* Mantiene la proporción sin deformar */
         }
 
-        h2 { margin: 0; color: #1e3a8a; font-size: 1.4rem; font-weight: 700; }
-        p { color: #475569; font-size: 0.85rem; margin-bottom: 25px; }
+        h2 { margin: 0; color: #1e3a8a; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: -0.5px; }
+        p { color: #475569; font-size: 0.85rem; margin-bottom: 30px; font-weight: 500; }
 
-        .input-group { text-align: left; margin-bottom: 15px; }
-        label { display: block; font-size: 0.7rem; font-weight: 700; color: #1e3a8a; margin-bottom: 5px; text-transform: uppercase; }
+        .input-group { text-align: left; margin-bottom: 18px; }
+        label { display: block; font-size: 0.7rem; font-weight: 700; color: #1e3a8a; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
         
         input {
             width: 100%;
-            padding: 12px;
+            padding: 12px 15px;
             border-radius: 12px;
             border: 1px solid rgba(0,0,0,0.1);
             background: rgba(255,255,255,0.9);
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
+            color: #1e293b;
+            transition: 0.3s;
         }
 
+        input:focus {
+            outline: none;
+            border-color: #1e3a8a;
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        /* BOTÓN AZUL CORPORATIVO */
         button {
             width: 100%;
             padding: 14px;
@@ -73,11 +100,18 @@
             border-radius: 12px;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             margin-top: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        button:hover { background: #1d4ed8; transform: translateY(-1px); }
+        button:hover { 
+            background: #1d4ed8; 
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -103,7 +137,7 @@
 
     <script>
         function login() {
-            // Lógica simple para el demo
+            // Lógica simple para el demo: redirige al dashboard
             window.location.href = "dashboard.html";
         }
     </script>
