@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Dashboard | Miso Dataworks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #020818 0%, #001035 30%, #104080 55%, #fcd385 75%, #fb923c 100%);
+            background-size: 300% 300%;
+            animation: gradientBG 25s ease-in-out infinite;
+            overflow-y: auto;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* FADE SUPERIOR */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to bottom, rgba(2, 8, 24, 0.8) 0%, rgba(2, 8, 24, 0) 100%);
+            z-index: 90;
+            pointer-events: none;
+        }
+
+        .header-card {
+            margin: 20px 25px 10px 25px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            padding: 10px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .header-logo { height: 35px; width: 35px; background: white; border-radius: 50%; padding: 4px; }
+        h1 { margin: 0; color: #0f172a; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; }
+
+        .btn-logout {
+            text-decoration: none;
+            color: #1e3a8a;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border: 1.5px solid #1e3a8a;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .btn-logout:hover { background: #dc2626; color: white; border-color: #dc2626; }
+
+        /* CONTENEDOR DE REPORTES - ANCHO COMPLETO */
+        .dashboard-grid {
+            padding: 20px 25px 40px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-container {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 30px;
+            border-radius: 35px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1700px; /* Ajuste para tus nuevos reportes anchos */
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* TARJETA DE REPORTE ÚNICA 1600x400 */
+        .report-card {
+            background: #ffffff;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            height: 460px; /* Espacio para el reporte de 400px + margen */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* IFRAME: Ajustado a 1600x400 px */
+        iframe { 
+            width: 1600px; 
+            height: 400px; 
+            border: none; 
+            transform: scale(1.0); /* Mantiene nitidez 1:1 */
+        }
+
+        .ai-insight {
+            margin-top: 15px;
+            background: rgba(253, 242, 213, 0.95);
+            border-radius: 18px;
+            padding: 15px 25px;
+            border: 1px solid #fbd38d;
+            max-width: 1600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ai-badge {
+            background: #2563eb;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.6rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .ai-text { font-size: 0.85rem; color: #1e293b; line-height: 1.5; margin: 0; font-weight: 500; }
+
+        /* FOOTER POWERED BY */
+        .footer-minimal {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .powered-tag {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .p-text { font-size: 0.6rem; font-weight: 700; color: #1e3a8a; text-transform: uppercase; }
+        .p-logo { height: 22px; width: auto; }
+
+        [class*="footer-branding"], a[href*="n8nchatui.com"] { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <header class="header-card">
+        <div class="header-left">
+            <img src="https://drive.google.com/uc?export=view&id=1Un44VYQsNWhElbICQwrlvv2CFxRdq8iA" alt="Logo" class="header-logo">
+            <h1>Executive Dashboard | Business Analytics</h1>
+        </div>
+        <a href="login.html" class="btn-logout">Cerrar Sesión</a>
+    </header>
+
+    <main class="dashboard-grid">
+        
+        <div class="section-container">
+            <h2 class="section-title">Tendencia los últimos 7 días</h2>
+            <div class="report-card">
+                <iframe src="https://lookerstudio.google.com/embed/reporting/c162cc00-973b-4268-bdc8-2d68a0917700/page/lyfqF"></iframe>
+            </div>
+            <div class="ai-insight">
+                <span class="ai-badge">AI Insight ✨</span>
+                <p class="ai-text">Análisis consolidado semanal: El Producto 1 lidera la estabilidad operativa con una participación dominante del 59%, optimizando el flujo de caja en días hábiles.</p>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <h2 class="section-title">Tendencia Mensual</h2>
+            <div class="report-card">
+                <iframe src="https://lookerstudio.google.com/embed/reporting/f350e905-871f-4bfd-8f04-df49969c9148/page/lyfqF"></iframe>
+            </div>
+            <div class="ai-insight">
+                <span class="ai-badge">AI Insight ✨</span>
+                <p class="ai-text">Proyección ejecutiva: Se confirma un crecimiento del 8.5% mensual. La eficiencia operativa ha mejorado significativamente, reduciendo cuellos de botella en la tabla de productos.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer-minimal">
+        <div class="powered-tag">
+            <span class="p-text">powered by</span>
+            <img src="https://drive.google.com/uc?export=view&id=1VgkWnT94AeynjAtb0kL2J4s5uyAQYpvt" alt="Logo" class="p-logo">
+        </div>
+    </footer>
+
+    <script type="module">
+        import Chatbot from "https://cdn.n8nchatui.com/v1/embed.js";
+        Chatbot.init({
+            "n8nChatUrl": "https://misodataworks.app.n8n.cloud/webhook/a052584a-1637-44cb-9491-a6383ceeedeb/chat",
+            "theme": {
+                "button": { "backgroundColor": "#1e3a8a", "size": 60 },
+                "chatWindow": { "title": "Miso AI", "backgroundColor": "#ffffff" }
+            }
+        });
+    </script>
+</body>
+</html>
