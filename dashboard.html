@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +51,7 @@
             z-index: 100;
         }
         .header-left { display: flex; align-items: center; gap: 12px; }
-        .header-logo { height: 40px; width: auto; } /* Ajustado para logo vertical */
+        .header-logo { height: 40px; width: auto; }
         h1 { margin: 0; color: #0f172a; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; }
         .btn-logout {
             text-decoration: none;
@@ -120,7 +120,6 @@
         }
         .ai-text { font-size: 0.85rem; color: #1e293b; line-height: 1.5; margin: 0; font-weight: 500; }
         
-        /* FOOTER POWERED BY PEQUEÑO */
         .footer-minimal {
             margin-bottom: 40px;
             display: flex;
@@ -138,7 +137,7 @@
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
         .p-text { font-size: 0.6rem; font-weight: 700; color: #1e3a8a; text-transform: uppercase; }
-        .p-logo { height: 20px; width: auto; } /* Logo horizontal pequeño */
+        .p-logo { height: 20px; width: auto; }
     </style>
 </head>
 <body>
@@ -147,29 +146,29 @@
             <img src="MISO Dataworks Vertical.png" alt="Miso Logo" class="header-logo">
             <h1>Executive Dashboard</h1>
         </div>
-        <a href="index.html" class="btn-logout">Cerrar Sesión</a>
+        <a href="index.html" class="btn-logout">Logout</a>
     </header>
 
     <main class="dashboard-grid">
         <div class="section-container">
-            <h2 class="section-title">Últimos 7 días</h2>
+            <h2 class="section-title">Last 7 Days</h2>
             <div class="report-card">
                 <iframe src="https://lookerstudio.google.com/embed/reporting/c162cc00-973b-4268-bdc8-2d68a0917700/page/lyfqF"></iframe>
             </div>
             <div class="ai-insight">
                 <span class="ai-badge">AI Insight ✨</span>
-                <p class="ai-text">Análisis consolidado semanal: Estabilidad operativa detectada con picos de demanda optimizados.</p>
+                <p class="ai-text">Consolidated weekly analysis: Operational stability detected with optimized demand peaks.</p>
             </div>
         </div>
 
         <div class="section-container">
-            <h2 class="section-title">Tendencia Mensual</h2>
+            <h2 class="section-title">Monthly Trend</h2>
             <div class="report-card">
                 <iframe src="https://lookerstudio.google.com/embed/reporting/f350e905-871f-4bfd-8f04-df49969c9148/page/lyfqF"></iframe>
             </div>
             <div class="ai-insight">
                 <span class="ai-badge">AI Insight ✨</span>
-                <p class="ai-text">Proyección ejecutiva: Crecimiento mensual del 8.5% basado en tendencias actuales.</p>
+                <p class="ai-text">Executive projection: 8.5% monthly growth based on current trends.</p>
             </div>
         </div>
     </main>
@@ -182,85 +181,6 @@
     </footer>
 
     <script type="module" defer>
-  import Chatbot from "https://cdn.n8nchatui.com/v1/embed.js";
-  Chatbot.init({
-    "n8nChatUrl": "https://misodataworks.app.n8n.cloud/webhook/a052584a-1637-44cb-9491-a6383ceeedeb/chat",
-    "metadata": {}, // Include any custom data to send with each message to your n8n workflow
-    "theme": {
-      "button": {
-        "backgroundColor": "#00eeff",
-        "right": 20,
-        "bottom": 20,
-        "size": 70,
-        "iconColor": "#ffffff",
-        "customIconSrc": "https://www.svgrepo.com/show/362552/chat-centered-dots-bold.svg",
-        "customIconSize": 65,
-        "customIconBorderRadius": 32,
-        "autoWindowOpen": {
-          "autoOpen": true,
-          "openDelay": 2
-        },
-        "borderRadius": "rounded",
-        "draggable": false
-      },
-      "tooltip": {
-        "showTooltip": false,
-        "tooltipMessage": "Hello 👋 customize & connect me to n8n",
-        "tooltipBackgroundColor": "#fff9f6",
-        "tooltipTextColor": "#1c1c1c",
-        "tooltipFontSize": 15,
-        "hideTooltipOnMobile": true
-      },
-      "allowProgrammaticMessage": false,
-      "chatWindow": {
-        "borderRadiusStyle": "rounded",
-        "avatarBorderRadius": 25,
-        "messageBorderRadius": 6,
-        "showTitle": true,
-        "title": "MISO Dataworks AI",
-        "titleAvatarSrc": "https://www.svgrepo.com/show/362552/chat-centered-dots-bold.svg",
-        "avatarSize": 40,
-        "welcomeMessage": "Hi! I'm your data bot, here to help with any questions about your information!",
-        "errorMessage": "Please try again",
-        "backgroundColor": "#ffffff",
-        "height": 600,
-        "width": 400,
-        "fontSize": 16,
-        "starterPrompts": [
-          "Best-selling products, last 3 days?",
-          "Best-performing product last month?"
-        ],
-        "starterPromptFontSize": 15,
-        "renderHTML": false,
-        "clearChatOnReload": false,
-        "showScrollbar": false,
-        "botMessage": {
-          "backgroundColor": "#f36539",
-          "textColor": "#fafafa",
-          "showAvatar": true,
-          "avatarSrc": "https://www.svgrepo.com/show/334455/bot.svg",
-          "showCopyToClipboardIcon": false
-        },
-        "userMessage": {
-          "backgroundColor": "#fff6f3",
-          "textColor": "#050505",
-          "showAvatar": true,
-          "avatarSrc": "https://www.svgrepo.com/show/532363/user-alt-1.svg"
-        },
-        "textInput": {
-          "placeholder": "Type your query",
-          "backgroundColor": "#ffffff",
-          "textColor": "#1e1e1f",
-          "sendButtonColor": "#f36539",
-          "maxChars": 50,
-          "maxCharsWarningMessage": "You exceeded the characters limit. Please input less than 50 characters.",
-          "autoFocus": false,
-          "borderRadius": 6,
-          "sendButtonBorderRadius": 50
-        }
-      }
-    }
-    });
-  </script>
-</body>
-</html>
+        import Chatbot from "https://cdn.n8nchatui.com/v1/embed.js";
+        Chatbot.init({
+            "n8nChatUrl": "
